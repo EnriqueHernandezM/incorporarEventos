@@ -223,8 +223,14 @@ body {
   }
 }
 #itemsEnElCarrito container p img {
+<<<<<<< HEAD
   width: 5rem;
   height: 6rem;
+=======
+  padding: 1rem;
+  width: 7rem;
+  height: 7rem;
+>>>>>>> 98c36a27c0cb2879806d68820b35d5cac57ce1aa
 }
 @media screen and (min-width: 992px) {
   #itemsEnElCarrito container p img {
