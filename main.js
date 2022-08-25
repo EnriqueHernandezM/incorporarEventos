@@ -52,7 +52,7 @@ function mostrarItemsEnTienda() {
         <p> $${inventarioVinateria[i].precio}</p>
         <p>${inventarioVinateria[i].tipoDeLicor}</p>
         <p>
-         <span onclick=addToCart(${inventarioVinateria[i].id});>🛒</span>
+        <span onclick=addToCart(${inventarioVinateria[i].id});>🛒</span>
         </p>
       </div>
       `;
@@ -99,7 +99,7 @@ function mostrarItemsEnCarrito() {
 }
 //funcion 5 para el index
 function respuesta() {
-  let inputValue = document.getElementById("domTextElement").value;
+  let inputValue = document.getElementById("entradaEdad").value;
   let resp = "No tienes la edad suficiente para entrar en este sitio";
   while (inputValue <= 17) {
     alert(resp);
@@ -129,10 +129,6 @@ function respuesta() {
     alert("no llenaste los campos requeridos");
   }
 }
-
-const getValueInput = () => {
-  document.getElementById("anuncioEntrada").innerHTML = inputValue;
-};
 //funcion filtros
 function filtrarPorTipos(categoria) {
   inventarioVinateria = [...inventarioVinateriaCopia];
