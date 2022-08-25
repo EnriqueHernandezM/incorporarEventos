@@ -1,6 +1,9 @@
-//Funcion para mostrar items en pantalla
-// funcion 3
+//array disponibles
+let inventarioVinateria = [];
+let carritoDeCompras = [];
 
+// funcion 3
+let esp = " ";
 function addToCart(id) {
   const productoIntroduzido = inventarioVinateria.find((item) => item.id == id);
   carritoDeCompras.push(productoIntroduzido);
@@ -12,13 +15,7 @@ function quitarDelCarrito(id) {
   mostrarItemsEnCarrito();
 }
 //funcion 5
-function FiltrarPorTipos(categoria) {
-  inventarioVinateria = [...inventarioVinateriaCopia];
-  if (categoria == "ron") {
-    inventarioVinateria = inventarioVinateria.filter((item) => item.tipoDeLicor == categoria);
-  }
-  mostrarItemsEnTienda();
-}
+//Funcion para mostrar items en pantalla
 function mostrarItemsEnTienda() {
   let html = "";
   for (let i = 0; i < inventarioVinateria.length; i++) {
@@ -41,6 +38,7 @@ function mostrarItemsEnTienda() {
 
 // funcion 2
 function mostrarItemsEnCarrito() {
+  const prueba = carritoDeCompras.reduce((acc, el) => acc + el.precio, 0);
   if (carritoDeCompras.length == 0) {
     document.getElementById("itemsEnElCarrito").innerHTML = "<h3>INGRESA PRODUCTOS A TU CARRITO</h3>";
   } else {
@@ -60,13 +58,22 @@ function mostrarItemsEnCarrito() {
       </div>
       `;
     }
+    let acumulador = "";
+    acumulador =
+      acumulador +
+      `
+        <div>
+          <h2>Total</h2>
+          <h3>$${prueba}</h3>
+          <button> pagar</button>
+        </div>
+      `;
+
     document.getElementById("itemsEnElCarrito").innerHTML = html;
+    document.getElementById("acumuladorTotal").innerHTML = acumulador;
   }
 }
-
 //Terminan Funciones.
-
-let esp = " ";
 
 //array de objetos
 class ItemsDisponibles {
@@ -78,11 +85,9 @@ class ItemsDisponibles {
     this.precio = precio;
   }
 }
-//array disponibles
-let inventarioVinateria = [];
-const carritoDeCompras = [];
+
 const promosAleatorias = [];
-const inventarioVinateriaCopia = [...inventarioVinateria];
+
 promosAleatorias.push("si nos visitas en Lunes hay 10% de descuentos");
 promosAleatorias.push("los viernes tenemos msi en toda la tienda");
 promosAleatorias.push("los martes tenemos 15% de descuento ");
@@ -98,8 +103,68 @@ const item6 = new ItemsDisponibles("../imagenes/i124jimador.jpg", 124, "Jimador"
 const item7 = new ItemsDisponibles("../imagenes/i180capitan.jpg", 180, "Capitan Morgan", "ron", 240);
 const item8 = new ItemsDisponibles("../imagenes/i100Bac.jpeg", 100, "Bacardi", "ron", 260);
 const item9 = new ItemsDisponibles("../imagenes/i166kraken.jpg", 166, "Kraken", "ron", 340);
-const item10 = new ItemsDisponibles("../imagenes/i125black.jpg", 125, "Red Label Blac", "whiskey", 600);
+const item10 = new ItemsDisponibles("../imagenes/i125black.jpg", 125, "Red Label Black", "whiskey", 600);
 
 inventarioVinateria.push(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10);
+const inventarioVinateriaCopia = [...inventarioVinateria];
+
+function filtrarPorTipos(categoria) {
+  inventarioVinateria = [...inventarioVinateriaCopia];
+
+  switch (categoria) {
+    case "whiskey":
+      inventarioVinateria = inventarioVinateria.filter((item) => item.tipoDeLicor == categoria);
+      break;
+    case "ron":
+      inventarioVinateria = inventarioVinateria.filter((item) => item.tipoDeLicor == categoria);
+      break;
+    case "tequila":
+      inventarioVinateria = inventarioVinateria.filter((item) => item.tipoDeLicor == categoria);
+      break;
+    case "vodka":
+      inventarioVinateria = inventarioVinateria.filter((item) => item.tipoDeLicor == categoria);
+    default:
+      break;
+  }
+
+  mostrarItemsEnTienda();
+}
+
+function respuesta() {
+  let inputValue = document.getElementById("domTextElement").value;
+  let resp = "No tienes la edad suficiente para entrar en este sitio";
+  while (inputValue <= 17) {
+    alert(resp);
+  }
+  if (inputValue >= 18) {
+    let inset = "";
+    inset =
+      inset +
+      `
+    <div id="anuncioEntrada">
+    <p id="anuncioEntrada"</p>
+    </div>
+    `;
+    document.getElementById("respAnuncio").innerHTML = inset;
+    let mostrando = "";
+    let resulta = "tienes" + esp + inputValue + esp + "años" + esp + "bienvenido";
+    mostrando =
+      mostrando +
+      `<div>
+      <h3> 
+      <p>${resulta} </p>
+      </h3>
+     </div>
+      `;
+    document.getElementById("anuncioEntrada").innerHTML = mostrando;
+  } else {
+    inputValue = 0;
+    alert("no llenaste los campos requeridos");
+  }
+}
+
+const getValueInput = () => {
+  document.getElementById("anuncioEntrada").innerHTML = inputValue;
+};
 
 mostrarItemsEnTienda();

@@ -106,7 +106,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  width: 95vw;
+  width: 97vw;
   margin: auto;
   @include adaptablePagina {
     width: 80vw;
@@ -117,18 +117,23 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+    padding: 2px;
+    flex-wrap: wrap;
+    @include adaptablePagina {
+      padding: 0rem 2.5rem 0rem 2.5rem;
+      justify-content: space-between;
+    }
     p {
-      line-height: 1px;
-      width: 17vw;
+      @include adaptablePagina {
+        width: 17vw;
+      }
       img {
-        padding: 1rem;
-        width: 7rem;
-        height: 2rem;
-
+        width: 5rem;
+        height: 6rem;
         @include adaptablePagina {
-          width: 14rem;
-          height: 14rem;
+          width: 13rem;
+          height: 13rem;
+          padding: 1rem;
         }
       }
     }
@@ -137,9 +142,22 @@
     }
   }
 }
-/* #anuncioEntrada {
-  border-radius: 2%;
+#acceso {
   padding: 3rem;
+  display: flex;
+  width: 80vw;
+  opacity: 100;
+  animation-name: desaparecer;
+  animation-duration: 10s;
+  animation-delay: 1s;
+  font-size: 2rem;
+  color: rgb(255, 219, 136);
+  font-family: "Trebuchet MS";
+  font-weight: 400;
+}
+#anuncioEntrada {
+  border-radius: 2%;
+  padding: 1rem;
   position: absolute;
   display: flex;
   left: 10vw;
@@ -148,12 +166,13 @@
   background-size: contain;
   opacity: 0;
   animation-name: desaparecer;
-  animation-duration: 5s;
+  animation-duration: 7s;
   animation-delay: 1s;
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: rgb(255, 219, 136);
   font-family: "Trebuchet MS";
   font-weight: 400;
+  margin: auto;
 }
 @keyframes desaparecer {
   50% {
@@ -162,7 +181,7 @@
   100% {
     opacity: 0;
   }
-} */
+}
 main {
   h4 {
     font-size: 1.75rem;
@@ -174,22 +193,56 @@ main {
     padding-top: 5rem;
     text-align: center;
     font-size: 2.5rem;
+    padding: 3.5rem;
   }
 }
 /*tienda*/
 #barraTienda {
   background: linear-gradient(180deg, rgba(48, 48, 48, 1) 7%, rgba(132, 132, 132, 1) 21%, rgba(255, 255, 255, 1) 50%, rgba(92, 92, 92, 1) 74%, rgba(0, 0, 0, 1) 86%);
   display: flex;
+  flex-wrap: wrap;
   justify-content: end;
-
+  align-items: center;
   li {
     list-style: none;
+    @include adaptablePagina {
+      padding: 1rem 3rem 1rem 3rem;
+    }
     padding-right: 2rem;
-    a {
+    span {
       text-decoration: none;
+      color: black;
+      font-size: 1.5rem;
+      cursor: pointer;
+
       img {
+        width: 4rem;
         padding: 1rem;
       }
+    }
+  }
+}
+#acumuladorTotal {
+  @include adaptablePagina {
+    padding: 1rem 10rem 1rem 17rem;
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      font-size: 2;
+    }
+    h3 {
+      font-size: 2rem;
+      @include adaptablePagina {
+        padding-left: 36.5rem;
+      }
+    }
+    button {
+      width: 4rem;
+      height: 3rem;
     }
   }
 }

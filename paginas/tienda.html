@@ -19,15 +19,19 @@
       </nav>
     </header>
     <main class="cuerpoPrincipalDePagina">
+      <ul id="barraTienda"> 
+        <li> <span onclick="filtrarPorTipos('')"><img src="https://cdn-icons-png.flaticon.com/512/839/839890.png" alt="Limpiar filtros"></span> </li>
+        <li><span onclick="filtrarPorTipos('whiskey');">whiskey</span></li>
+        <li> <span onclick="filtrarPorTipos('ron');">ron</span></li>
+        <li><span onclick="filtrarPorTipos('tequila');"">tequila</span></li> 
+      </ul>
       <section>
-        <ul id="barraTienda"></ul>
-      </section>
-
+        <h3>Tenemos los mejores productos para ti</h3>
       <div id="itemsAmostrar"></div>
-      <section>
+      </section>
         <h3>CARRITO DE COMPRAS</h3>
         <div id="itemsEnElCarrito"></div>
-      </section>
+        <div id="acumuladorTotal"></div>
     </main>
     <footer class="pieDePaginas">
       <h5>
